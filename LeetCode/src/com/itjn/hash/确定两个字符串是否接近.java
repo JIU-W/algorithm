@@ -5,7 +5,7 @@ import java.util.*;
 public class 确定两个字符串是否接近 {
 
     public static void main(String[] args) {
-        System.out.println(closeStrings("cabbba", "bbcbaa"));
+        System.out.println(closeStrings1("aacabb", "bbcbaa"));
     }
 
 
@@ -62,16 +62,40 @@ public class 确定两个字符串是否接近 {
         }
         Collections.sort(list1);
         Collections.sort(list2);
+
         int i = 0;
         for (Integer integer : list1) {
             Integer integer1 = list2.get(i);
-            if (!integer1.equals(integer)){
+            if (!integer1.equals(integer)){ //和integer1  != integer不一样，一定要用equals
                 return false;
             }
             i++;
         }
         return true;
     }
+
+
+    //方法二：思想和方法一相同，但是代码十分简洁
+    public static boolean closeStrings1(String word1, String word2) {
+        int[] count1 = new int[26], count2 = new int[26];
+        for (char c : word1.toCharArray()) {
+            count1[c - 'a']++;
+        }
+        for (char c : word2.toCharArray()) {
+            count2[c - 'a']++;
+        }
+        for (int i = 0; i < 26; i++) {//检查字符集是否相同，不相同(就是一个字符串里含有另一个字符串不含有的字符)则返回false
+            if ((count1[i] > 0 && count2[i] == 0 )|| (count1[i] == 0 && count2[i] > 0)) {
+                return false;
+            }
+        }
+        Arrays.sort(count1);
+        Arrays.sort(count2);
+        return Arrays.equals(count1, count2);
+    }
+
+
+
 
 
 }
