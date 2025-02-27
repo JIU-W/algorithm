@@ -8,19 +8,25 @@ public class oneThousandFourHundredAndThirtyOne {
 
     public static void main(String[] args) {
         int[] a = new int[]{2,3,5,1,3};
-        List<Boolean> booleans = kidsWithCandies(a, 3);
-        System.out.println(booleans);
+        List<Boolean> res = kidsWithCandies(a, 3);
+        for (Boolean b : res) {
+            System.out.println(b);
+        }
     }
 
 
     public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         List<Boolean> res = new ArrayList<>();
-
-        Arrays.sort(candies);
+        int max = 0;
         for (int candy : candies) {
-            System.out.println(candy);
+            if (candy > max){
+                max = candy;
+            }
         }
-        return null;
+        for (int i = 0; i < candies.length; i++) {
+            res.add(candies[i] + extraCandies >= max);
+        }
+        return res;
     }
 
 
