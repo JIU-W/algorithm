@@ -22,6 +22,7 @@ public class fortyNine {
         }
     }
 
+    //排序 + 借用Hashmap
     public static List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
@@ -44,4 +45,28 @@ public class fortyNine {
     }
 
 
+    public static List<List<String>> groupAnagrams1(String[] strs){
+        List<List<String>> list = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (int i = 0; i < strs.length; i++) {
+            char[] chars = strs[i].toCharArray();
+            Arrays.sort(chars);
+            String s = new String(chars);
+            if(!map.containsKey(s)){
+                List<String> tempList = new ArrayList<>();
+                tempList.add(strs[i]);
+                map.put(s, tempList);
+            }else{
+                map.get(s).add(strs[i]);
+            }
+        }
+
+        Set<String> ks = map.keySet();
+        for (String k : ks) {
+            list.add(map.get(k));
+        }
+
+        return list;
+    }
 }
