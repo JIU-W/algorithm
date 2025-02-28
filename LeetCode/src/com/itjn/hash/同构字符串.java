@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class 同构字符串 {
-
     public static void main(String[] args) {
         boolean isomorphic = isIsomorphic("egg", "add");
         System.out.println(isomorphic);
