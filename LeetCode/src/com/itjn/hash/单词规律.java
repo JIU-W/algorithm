@@ -1,9 +1,6 @@
 package com.itjn.hash;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class 单词规律 {
     public static void main(String[] args) {
@@ -15,7 +12,11 @@ public class 单词规律 {
         Map<Character, String> map1 = new HashMap<>();
         Map<String, Character> map2 = new HashMap<>();
 
-        List<String> list = new ArrayList<>();
+        String[] s1 = s.split(" ");
+        List<String> list = Arrays.asList(s1);
+
+        //以下这段代码，一个split方法就搞定了！！！
+        /*List<String> list = new ArrayList<>();
         StringBuffer sb = new StringBuffer(s);
         for (int i = 0; i < sb.length(); i++) {
             if (sb.charAt(i) == ' ') {
@@ -26,19 +27,19 @@ public class 单词规律 {
             if (i == sb.length() - 1) {
                 list.add(sb.substring(0, sb.length()));
             }
-        }
+        }*/
+
         if(pattern.length() != list.size())return false;
+
         for (int i = 0; i < pattern.length(); i++) {
             char cc = pattern.charAt(i);
-            String ss = list.get(i);
+            String ss = list.get(i);                //用equals比较！！！
             if((map1.containsKey(cc) && !map1.get(cc).equals(ss) )||(map2.containsKey(ss) && map2.get(ss) != cc)){
                 return false;
             }
             map1.put(cc, ss);
             map2.put(ss, cc);
         }
-
-
         return true;
     }
 
