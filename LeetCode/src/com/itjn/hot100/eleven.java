@@ -4,20 +4,20 @@ import java.util.Arrays;
 
 public class eleven {
     public static void main(String[] args) {
-        int[] height = {1,8,6,2,5,4,8,3,7};
-        System.out.println(maxArea(height));
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+        System.out.println(maxArea3(height));
     }
 
     //方法一：双指针
     public static int maxArea(int[] height) {
         int max = 0;
         int l = 0, r = height.length - 1;
-        while(l<r){
+        while (l < r) {
             int area = Math.min(height[l], height[r]) * (r - l);
-            max = Math.max(max,area);
-            if(height[l] <= height[r]){
+            max = Math.max(max, area);
+            if (height[l] <= height[r]) {
                 l++;
-            }else{
+            } else {
                 r--;
             }
         }
@@ -29,17 +29,32 @@ public class eleven {
         int max = 0;
         int h = -1;
         for (int i = 0; i < height.length; i++) {
-            if(height[i] > h){
+            if (height[i] > h) {
                 h = height[i];
-            }else{
+            } else {
                 continue;
             }
             for (int j = i + 1; j < height.length; j++) {
-                max = Math.max(Math.min(height[i],height[j])*(j-i),max);
+                max = Math.max(Math.min(height[i], height[j]) * (j - i), max);
             }
         }
         return max;
     }
 
+    //双指针(二刷)
+    public static int maxArea3(int[] height) {
+        int max = 0;
+        int l = 0, r = height.length - 1;
+        while (l < r) {
+            int area = Math.min(height[l], height[r]) * (r - l);
+            if(height[l] < height[r]){
+                l++;
+            } else {
+                r--;
+            }
+            max = Math.max(max, area);
+        }
+        return max;
+    }
 
 }
