@@ -2,7 +2,7 @@ package com.itjn.interview150;
 
 public class oneHundredAndTwentyFive {
     public static void main(String[] args) {
-        boolean b = isPalindrome1("A man, a plan, a canal: Panama");
+        boolean b = isPalindrome("A man, a plan, a canal: Panama");
         System.out.println(b);
     }
 
@@ -18,34 +18,30 @@ public class oneHundredAndTwentyFive {
                 i--;//删除后，指针会后移，所以要减一
             }
         }
-        StringBuffer sb1 = new StringBuffer(sb);
-        String s1 = sb1.toString();
-        sb.reverse();
-        String s2 = sb.toString();
-        if(s1.equals(s2))return true;
+        if(sb.toString().equals(sb.reverse().toString())){
+            return true;
+        }
         return false;
     }
 
-    //双指针。。。
-
-
-
-    //二刷
+    //双指针
     public static boolean isPalindrome1(String s) {
-        if(s.length() == 1)return true;
-
-        StringBuffer sb = new StringBuffer(s.toLowerCase());
-        for (int i = 0; i < sb.length(); i++) {
-            if(!((s.charAt(i) >= 'a' && s.charAt(i) <='z') || (s.charAt(i) >= '0' && s.charAt(i) <='9'))){
-                sb.replace(i,i + 1,"");
-                i--;
+        int i = 0;
+        int j = s.length() - 1;
+        while (i < j) {
+            if (!Character.isLetterOrDigit(s.charAt(i))) {
+                i++;
+            } else if (!Character.isLetterOrDigit(s.charAt(j))) {
+                j--;
+            } else if (Character.toLowerCase(s.charAt(i)) == Character.toLowerCase(s.charAt(j))) {
+                i++;
+                j--;
+            } else {
+                return false;
             }
         }
-        String s1 = sb.toString();
-        sb.reverse();
-        String s2 = sb.toString();
-        if (s1.equals(s2))return true;
-        return false;
+        return true;
     }
+
 
 }
