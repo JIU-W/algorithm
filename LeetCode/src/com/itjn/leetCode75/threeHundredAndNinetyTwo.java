@@ -27,6 +27,7 @@ public class threeHundredAndNinetyTwo {
         int m = s.length(), n = t.length();
         if(m == 0)return true;
         if(m > n)return false;
+
         int j = 0;
         for (int i = 0; i < n; i++) {
             if(t.charAt(i) == s.charAt(j)){
