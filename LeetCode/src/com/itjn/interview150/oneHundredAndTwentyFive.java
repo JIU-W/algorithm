@@ -1,10 +1,8 @@
 package com.itjn.interview150;
 
-import java.util.Locale;
-
 public class oneHundredAndTwentyFive {
     public static void main(String[] args) {
-        boolean b = isPalindrome("A man, a plan, a canal: Panama");
+        boolean b = isPalindrome1("A man, a plan, a canal: Panama");
         System.out.println(b);
     }
 
@@ -30,5 +28,24 @@ public class oneHundredAndTwentyFive {
 
     //双指针。。。
 
+
+
+    //二刷
+    public static boolean isPalindrome1(String s) {
+        if(s.length() == 1)return true;
+
+        StringBuffer sb = new StringBuffer(s.toLowerCase());
+        for (int i = 0; i < sb.length(); i++) {
+            if(!((s.charAt(i) >= 'a' && s.charAt(i) <='z') || (s.charAt(i) >= '0' && s.charAt(i) <='9'))){
+                sb.replace(i,i + 1,"");
+                i--;
+            }
+        }
+        String s1 = sb.toString();
+        sb.reverse();
+        String s2 = sb.toString();
+        if (s1.equals(s2))return true;
+        return false;
+    }
 
 }
