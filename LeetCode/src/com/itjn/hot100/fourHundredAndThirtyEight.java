@@ -1,9 +1,6 @@
 package com.itjn.hot100;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class fourHundredAndThirtyEight {
     public static void main(String[] args) {
