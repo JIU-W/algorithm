@@ -49,5 +49,12 @@ public class three {
         return max;
     }
 
+    //二刷
+    public static int lengthOfLongestSubstring2(String s){
+        int n = s.length();
+
+
+        return 0;
+    }
 
 }
