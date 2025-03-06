@@ -1,5 +1,6 @@
 package com.itjn.hot100;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class fifteen {
@@ -29,12 +30,9 @@ public class fifteen {
     // 2.添加“去重”逻辑代码
     public static List<List<Integer>> threeSum111(int[] nums) {
         Set<List<Integer>> result = new HashSet<>(); //使用HashSet避免重复的三元组
-
         //排序：1.便于使用双指针 2.便于本题HashSet的去重
         Arrays.sort(nums);
-
         for (int i = 0; i < nums.length - 2; i++) {
-
             //一项优化
             if(nums[i] > 0)break;
 
@@ -48,7 +46,8 @@ public class fifteen {
             while (j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
                 if (sum == 0) {
-                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    List<Integer> list = Arrays.asList(nums[i], nums[j], nums[k]);
+                    result.add(list);
                     j++;
                     k--;
                     //跳过所有重复的nums[j]和nums[k]，防止记录到重复组合。"去重"逻辑
