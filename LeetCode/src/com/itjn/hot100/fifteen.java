@@ -5,7 +5,7 @@ import java.util.*;
 
 public class fifteen {
     public static void main(String[] args) {
-        List<List<Integer>> lists = threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        List<List<Integer>> lists = threeSum1(new int[]{-1, 0, 1, 2, -1, -4});
         for (List<Integer> list : lists) {
             for (Integer i : list) {
                 System.out.print(i + " ");
@@ -28,7 +28,7 @@ public class fifteen {
     //而这里仍然可以用HashSet去重的原因是“数组已经排好序了”，重复的三元组顺序必然相同。
 
     // 2.添加“去重”逻辑代码
-    public static List<List<Integer>> threeSum111(int[] nums) {
+    public static List<List<Integer>> threeSum1(int[] nums) {
         Set<List<Integer>> result = new HashSet<>(); //使用HashSet避免重复的三元组
         //排序：1.便于使用双指针 2.便于本题HashSet的去重
         Arrays.sort(nums);
@@ -37,7 +37,7 @@ public class fifteen {
             if(nums[i] > 0)break;
 
             //因为已经将 nums[k - 1] 的所有组合加入到结果中，本次双指针搜索只会得到重复组合。
-            //所以这个操作做到了对第一个指针的去重。"去重"逻辑
+            //所以这个操作做到了对第一个指针的去重。"去重"逻辑     (优化了时间复杂度)
             if(i > 0 && nums[i] == nums[i - 1]) continue;
 
             int j = i + 1; // 第二个指针
@@ -50,16 +50,16 @@ public class fifteen {
                     result.add(list);
                     j++;
                     k--;
-                    //跳过所有重复的nums[j]和nums[k]，防止记录到重复组合。"去重"逻辑
+                    //跳过所有重复的nums[j]和nums[k]，防止记录到重复组合。"去重"逻辑   (优化了时间复杂度)
                     while (j < k && nums[j] == nums[j - 1]) j++;
                     while (j < k && nums[k] == nums[k + 1]) k--;
                 } else if (sum < 0) {
                     j++;
-                    //跳过所有重复的nums[j]。"去重"逻辑
+                    //跳过所有重复的nums[j]。"去重"逻辑    (优化了时间复杂度)
                     while (j < k && nums[j] == nums[j - 1]) j++;
                 } else {
                     k--;
-                    //跳过所有重复的nums[k]。"去重"逻辑
+                    //跳过所有重复的nums[k]。"去重"逻辑    (优化了时间复杂度)
                     while (j < k && nums[k] == nums[k + 1]) k--;
                 }
             }
@@ -68,18 +68,16 @@ public class fifteen {
     }
 
     //双重循环 + 哈希查找 + Set去重(要先对数组排好序)
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static List<List<Integer>> threeSum2(int[] nums) {
         Set<List<Integer>> res = new HashSet<>();
         HashMap<Integer, Integer> map = new HashMap<>();
 
         //这里的排序一定要加上，不然HashMap的去重效果就会丢失。
         Arrays.sort(nums);
-
         for (int i = 0; i < nums.length; i++) {
-
             if(nums[i] > 0)break;
             //因为已经将 nums[k - 1] 的所有组合加入到结果中，本次双指针搜索只会得到重复组合。
-            //所以这个操作做到了对第一个指针的去重。"去重"逻辑
+            //所以这个操作做到了对第一个指针的去重。"去重"逻辑  (优化了时间复杂度)
             if(i > 0 && nums[i] == nums[i - 1]) continue;
 
             int target = 0 - nums[i];
