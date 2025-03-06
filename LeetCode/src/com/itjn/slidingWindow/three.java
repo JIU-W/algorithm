@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class three {
     public static void main(String[] args) {
-        int i = lengthOfLongestSubstring1("bbbbb");
+        int i = lengthOfLongestSubstring2("pwwkew");
         System.out.println(i);
     }
 
@@ -51,10 +51,22 @@ public class three {
 
     //二刷
     public static int lengthOfLongestSubstring2(String s){
+        int max = 0;
         int n = s.length();
-
-
-        return 0;
+        Set<Character> set = new HashSet<>();
+        int l = 0;
+        for (int r = 0; r < n; ) {
+            char c = s.charAt(r);
+            if(l <= r && set.contains(c)){
+                set.remove(s.charAt(l));
+                l++;
+            }else{
+                set.add(s.charAt(r));
+                r++;
+            }
+            max = Math.max(max, r - l);
+        }
+        return max;
     }
 
 }
