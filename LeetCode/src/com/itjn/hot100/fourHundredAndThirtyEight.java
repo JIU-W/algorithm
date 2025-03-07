@@ -9,7 +9,7 @@ public class fourHundredAndThirtyEight {
     }
 
     //定长滑动窗口  技巧：用数组存储字符频次，然后比较数组。
-    //          (这种比较字符串的时间复杂度为O(n)， 而排序的时间复杂度为O(nlgN)，所以选这种方式)
+    //          (这种比较字符串的时间复杂度为O(n)，而排序的时间复杂度为O(nlgN)，所以选这种方式)
     public static List<Integer> findAnagrams(String s, String p) {
         List<Integer> list = new ArrayList<>();
         int n = s.length(), m = p.length();
