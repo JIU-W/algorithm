@@ -4,7 +4,7 @@ import java.util.*;
 
 public class fourHundredAndThirtyEight {
     public static void main(String[] args) {
-        List<Integer> list = findAnagrams("cbaebabacd", "abc");
+        List<Integer> list = findAnagrams2("cbaebabacd", "acb");
         System.out.println(list);
     }
 
@@ -44,6 +44,7 @@ public class fourHundredAndThirtyEight {
         char[] chars = p.toCharArray();
         Arrays.sort(chars);
         p = Arrays.toString(chars);
+
         for (int i = 0; i < n - m + 1; i++) {
             String ss = s.substring(i, i + m);
             char[] c = ss.toCharArray();
@@ -58,9 +59,14 @@ public class fourHundredAndThirtyEight {
     //二刷
     public static List<Integer> findAnagrams3(String s, String p){
         List<Integer> res = new ArrayList<>();
+        int n = s.length(),m = p.length();
+        if(n < m)return res;
 
 
-        return null;
+
+
+
+        return res;
     }
 
 
