@@ -62,4 +62,18 @@ public class fiveHundredAndSixty {
     }
 
 
+    //二刷
+    public static int subarraySum3(int[] nums, int k){
+
+        return 0;
+    }
+
+
+
+
+
+
+
+
+
 }
