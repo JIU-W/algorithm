@@ -57,18 +57,4 @@ public class fourHundredAndThirtyEight {
     }
 
 
-    //二刷
-    public static List<Integer> findAnagrams3(String s, String p){
-        List<Integer> res = new ArrayList<>();
-        int n = s.length(),m = p.length();
-        if(n < m)return res;
-
-
-
-
-
-        return res;
-    }
-
-
 }

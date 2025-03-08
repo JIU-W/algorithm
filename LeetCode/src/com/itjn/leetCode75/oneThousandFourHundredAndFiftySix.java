@@ -2,14 +2,14 @@ package com.itjn.leetCode75;
 
 public class oneThousandFourHundredAndFiftySix {
     public static void main(String[] args) {
-        int i = maxVowels("leetcode", 3);
+        int i = maxVowels1("rhythms", 4);
         System.out.println(i);
     }
 
     //定长滑动窗口
     public static int maxVowels(String s, int k) {
         int n = s.length();
-        int max = 0, tempMax= 0;
+        int max = 0, tempMax = 0;
         String sbs = s.substring(0, k);
         tempMax = containsVowel(sbs);
         max = tempMax;
@@ -21,7 +21,6 @@ public class oneThousandFourHundredAndFiftySix {
             i++;
             max = Math.max(max, tempMax);
         }
-
         return max;
     }
 
@@ -36,12 +35,34 @@ public class oneThousandFourHundredAndFiftySix {
         return count;
     }
 
-    public static int containsVowel(Character c) {
+    public static int containsVowel(char c) {
         int count = 0;
-        if (c == 'a' || c == 'e' || c == 'o' || c == 'i' || c == 'u'){
+        if (c == 'a' || c == 'e' || c == 'o' || c == 'i' || c == 'u') {
             count++;
         }
         return count;
     }
+
+    //二刷
+    public static int maxVowels1(String s, int k) {
+        int max = 0, n = s.length();
+        String ss = s.substring(0, k);
+        max = containsVowel(ss);
+        int i = 0, j = i + k - 1;
+        int sum = max;
+        while (i < n - k) {
+            j++;
+            if (containsVowel(s.charAt(j)) == 1) {
+                sum = sum + 1;
+            }
+            if (containsVowel(s.charAt(i)) == 1) {
+                sum = sum - 1;
+            }
+            i++;
+            max = Math.max(max, sum);
+        }
+        return max;
+    }
+
 
 }
