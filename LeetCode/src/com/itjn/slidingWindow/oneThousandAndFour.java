@@ -12,8 +12,8 @@ public class oneThousandAndFour {
         int max = 0;
         int l = 0;
         for (int r = 0; r < nums.length; r++) {
-            if(nums[r] == 0)count++;
-            while(count > k){
+            if (nums[r] == 0) count++;
+            while (count > k) {
                 count -= 1 - nums[l];
                 l++;
             }
@@ -22,6 +22,19 @@ public class oneThousandAndFour {
         return max;
     }
 
+    public static int longestOnes1(int[] nums, int k) {
+        int max = 0, count = 0;
+        int l = 0;
+        for (int r = 0; r < nums.length; r++) {
+            if(nums[r] == 0)count++;
+            while(count > k){
+                count = count - (1 - nums[l]);
+                l++;
+            }
+            max = Math.max(max, r - l + 1);
+        }
+        return max;
+    }
 
 
 }
