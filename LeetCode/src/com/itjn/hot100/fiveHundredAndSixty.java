@@ -1,10 +1,11 @@
 package com.itjn.hot100;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class fiveHundredAndSixty {
     public static void main(String[] args) {
-        int i = subarraySum2(new int[]{-1, -1, 1}, 0);
+        int i = subarraySum3(new int[]{-1, -1, 1}, 0);
         System.out.println(i);
     }
 
@@ -60,10 +61,18 @@ public class fiveHundredAndSixty {
     }
 
 
-    //二刷 暴力
+    //二刷
     public static int subarraySum3(int[] nums, int k){
-        int count = 0;
-
+        int count = 0, preSum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            preSum += nums[i];
+            if(map.containsKey(preSum - k)){
+                count += map.get(preSum - k);
+            }
+            map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+        }
         return count;
     }
 
