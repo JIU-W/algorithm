@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class fiveHundredAndSixty {
     public static void main(String[] args) {
-        int i = subarraySum(new int[]{-1, -1, 1}, 0);
+        int i = subarraySum2(new int[]{-1, -1, 1}, 0);
         System.out.println(i);
     }
 
@@ -14,9 +14,8 @@ public class fiveHundredAndSixty {
         HashMap <Integer, Integer> mp = new HashMap<>();
         mp.put(0, 1);
         for (int i = 0; i < nums.length; i++) {
-            preSum += nums[i];//这里我们可以不用建立前缀和 数组preSum[],
-            //直接用 preSum 变量来记录
-
+            preSum += nums[i];//这里我们可以不用建立前缀和 数组preSum[]，
+            //直接用preSum变量来记录。
             //原理式子：preSum - (preSum - k) == k
             if (mp.containsKey(preSum - k)) {
                 count += mp.get(preSum - k);
@@ -38,7 +37,6 @@ public class fiveHundredAndSixty {
         }
         return count;
     }
-
 
     //滑动窗口(这题不能使用滑动窗口，因为数组元素可能为负数)
     public static int subarraySum1(int[] nums, int k) {
@@ -62,10 +60,11 @@ public class fiveHundredAndSixty {
     }
 
 
-    //二刷
+    //二刷 暴力
     public static int subarraySum3(int[] nums, int k){
+        int count = 0;
 
-        return 0;
+        return count;
     }
 
 
