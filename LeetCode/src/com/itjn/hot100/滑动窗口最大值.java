@@ -31,7 +31,7 @@ public class 滑动窗口最大值 {
         res[0] = pq.peek()[0];
         for (int i = k; i < n; i++) {
             pq.offer(new int[]{nums[i], i});
-            while (pq.peek()[1] <= i - k) {
+            while (pq.peek()[1] <= i - k) {//检查队列最大值(队首元素)是否是在定长滑动内部，如果不在则要去除
                 pq.poll();
             }
             res[i - k + 1] = pq.peek()[0];
