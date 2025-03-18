@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 public class 滑动窗口最大值 {
     public static void main(String[] args) {
         int[] arr = maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
-        //System.out.println(arr.toString());
+        System.out.println(Arrays.toString(arr));
     }
 
 
