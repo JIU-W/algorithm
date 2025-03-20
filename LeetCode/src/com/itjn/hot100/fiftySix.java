@@ -40,4 +40,15 @@ public class fiftySix {
         return ans;
     }
 
+    //二刷
+    public static int[][] merge1(int[][] intervals){
+        int[][] res = new int[][]{};
+        Arrays.sort(intervals,(o1, o2) -> o1[0] - o2[0]);
+        for (int i = 0; i < intervals.length; i++) {
+            
+        }
+
+        return res;
+    }
+
 }
