@@ -1,13 +1,10 @@
 package com.itjn.hot100;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class fiftySix {
     public static void main(String[] args) {
-        int[][] merge = merge(new int[][]{{1, 3}, {8, 10}, {2, 6}, {15, 18}});
+        int[][] merge = merge1(new int[][]{{1,4},{0,2},{3,5}});
         for (int[] ints : merge) {
             for (int anInt : ints) {
                 System.out.print(anInt + " ");
@@ -42,13 +39,25 @@ public class fiftySix {
 
     //二刷
     public static int[][] merge1(int[][] intervals){
-        int[][] res = new int[][]{};
         Arrays.sort(intervals,(o1, o2) -> o1[0] - o2[0]);
-        for (int i = 0; i < intervals.length; i++) {
-            
+        List<int[]> list = new ArrayList<>();
+        list.add(intervals[0]);
+        int index = 0;
+        for (int i = 1; i < intervals.length; i++) {
+            if(intervals[i][0] > list.get(index)[1]){
+                list.add(intervals[i]);
+                index++;
+            }else{
+                if(intervals[i][1] > list.get(index)[1]){
+                    //第一种覆盖方式
+                    list.get(index)[1] = intervals[i][1];
+                    //第二种覆盖方式
+                    //int[] temp = {list.get(index)[0], intervals[i][1]};
+                    //list.set(index, temp);
+                }
+            }
         }
-
-        return res;
+        return list.toArray(new int[list.size()][]);
     }
 
 }
