@@ -20,10 +20,9 @@ public class oneHundredAndEightyNine {
             arr[j] = nums[i];
             j++;
         }
-        /*for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             nums[i] = arr[i];
-        }*/
-        System.arraycopy(arr, 0, nums, 0, nums.length);
+        }
     }
 
     //方法二：数组翻转（想法很妙！！！）（不使用额外的空间）
@@ -45,7 +44,30 @@ public class oneHundredAndEightyNine {
         }
     }
 
-
     //方法三：环状替换（不使用额外的空间）
+
+
+    //二刷
+    public static void rotate2(int[] nums, int k) {
+        int n = nums.length;
+        if(n == 1 || n == k)return;
+        while(n < k){
+            k = k - n;
+        }
+        int[] temp = new int[k];
+        int index = 0;
+        for (int i = n - k; i < nums.length; i++) {
+            temp[index] = nums[i];
+            index++;
+        }
+        int index2 = n - 1;
+        for (int i = n - k - 1; i >= 0; i--) {
+            nums[index2] = nums[i];
+            index2--;
+        }
+        for (int i = 0; i < temp.length; i++) {
+            nums[i] = temp[i];
+        }
+    }
 
 }
