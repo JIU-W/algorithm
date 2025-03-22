@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class twoHundredAndThirtyEight {
     public static void main(String[] args) {
-        int[] ans = productExceptSelf(new int[]{1, 2, 3, 4});
+        int[] ans = productExceptSelf1(new int[]{1, 2, 3, 4});
         System.out.println(Arrays.toString(ans));
     }
 
@@ -43,12 +43,39 @@ public class twoHundredAndThirtyEight {
 
     //二刷
     public static int[] productExceptSelf1(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-
-
-
-
-        return null;
+        int[] res = new int[nums.length];
+        int[] pre = new int[nums.length];
+        int[] pos = new int[nums.length];
+        int temp = 1;
+        for (int i = 0; i < nums.length; i++) {
+            pre[i] = temp;
+            temp *= nums[i];
+        }
+        int temp2 = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            pos[i] = temp2;
+            temp2 *= nums[i];
+            res[i] = pre[i] * pos[i];
+        }
+        return res;
     }
+
+    //二刷代码改装(把空间复杂度降下来)
+    public static int[] productExceptSelf2(int[] nums) {
+        int[] res = new int[nums.length];
+        int temp = 1;
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = temp;
+            temp *= nums[i];
+        }
+        temp = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            res[i] = res[i] * temp;
+            temp *= nums[i];
+        }
+        return res;
+    }
+
+
 
 }
