@@ -1,6 +1,9 @@
 package com.itjn.prefixAnd;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class twoHundredAndThirtyEight {
     public static void main(String[] args) {
@@ -35,8 +38,17 @@ public class twoHundredAndThirtyEight {
         return ans;
     }
 
-
-
     //双指针
+
+
+    //二刷
+    public static int[] productExceptSelf1(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+
+
+
+
+        return null;
+    }
 
 }
