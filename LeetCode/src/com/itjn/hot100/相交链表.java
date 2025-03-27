@@ -1,5 +1,7 @@
 package com.itjn.hot100;
 
+import org.w3c.dom.NodeList;
+
 import javax.xml.soap.Node;
 import java.util.HashSet;
 import java.util.Set;
