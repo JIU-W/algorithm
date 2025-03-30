@@ -5,19 +5,25 @@ public class 数字凸包区间 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
+        int[] a = new int[n + 1];
+        for (int i = 1; i < n + 1; i++) {
             a[i] = sc.nextInt();
         }
-        for (int i = 0; i < n; i++) {
-            //int temp = 0;
-            int res = 1000000001;
-            for (int j = n - 1; j > i; j--) {
-                if(a[j] < res){
-                    res = a[j];
+        int min = a[1], max = a[1];
+        for (int i = 1; i < n + 1; i++) {
+            min = Math.min(a[i], min);
+            max = Math.max(a[i], max);
+            /*for(int k = 0; k < 1000000001; k++){
+                if(k < min || k > max){
+                    System.out.print(k + " ");
+                    break;
                 }
+            }*/
+            if(min > 0){
+                System.out.print(0 + " ");
+            }else if(min == 0){
+                System.out.print(max + 1 + " ");
             }
-            System.out.print(res + " ");
         }
 
     }
