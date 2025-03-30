@@ -1,4 +1,4 @@
-package com.itjn.other.中大厂笔试题;
+package com.itjn.other.中大厂笔试题.美团;
 
 import java.util.Arrays;
 import java.util.Scanner;
