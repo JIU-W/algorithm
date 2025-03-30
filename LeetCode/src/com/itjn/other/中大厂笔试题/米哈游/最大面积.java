@@ -41,9 +41,9 @@ public class 最大面积 {
 
         //计算两种形状的最大值
         //三角形的情况
-        int res = max * (1 + max) / 2;
+        int res = max * (1 + max) / 2;//等差数列求和
         //矩形的情况
-        for (int k = 1; k <= max; k++) {
+        for (int k = 1; k <= max; k++) {//
             int m = max - (k - 1);
             res = Math.max(res, k * m);
         }
