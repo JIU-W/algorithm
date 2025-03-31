@@ -26,6 +26,7 @@ public class 回文时间 {
             if(shi_Int == 24){//时钟进位
                 shi_Int = 0;
             }
+            shi_Int = shi_Int % 24;
             String s2;
             if(fen_Int < 10){
                 String temp = Integer.toString(fen_Int);
