@@ -1,5 +1,7 @@
 package com.itjn.hot100;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class 反转链表 {
