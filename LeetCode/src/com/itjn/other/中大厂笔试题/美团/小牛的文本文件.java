@@ -9,11 +9,11 @@ public class 小牛的文本文件 {
         while(count-->0){
             String s = sc.next();
             StringBuilder t = new StringBuilder("");
-            int index = 0;
+            //int index = 0;
             char cc = s.charAt(0);
             if(cc != 'R' && cc != 'Z'){
                 t.append(cc);
-                index++;
+                //index++;
             }
             for (int i = 1; i < s.length(); i++) {
                 char c = s.charAt(i);
@@ -24,11 +24,14 @@ public class 小牛的文本文件 {
                     if(c1 == 'R'){
                         t = t.reverse();
                     }else{
-                        t.deleteCharAt(--index);
+                        if (t.length() > 0) {
+                            t.deleteCharAt(t.length() - 1);
+                        }
+                        //t.deleteCharAt(--index);
                     }
                 }else{
                     t.append(c);
-                    index++;
+                    //index++;
                 }
             }
             System.out.println(t);
