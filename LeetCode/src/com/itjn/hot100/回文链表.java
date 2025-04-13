@@ -27,8 +27,36 @@ public class 回文链表 {
 
     //快慢指针法(最优解法)(空间复杂度为 O(1))
     public boolean isPalindrome2(ListNode head) {
-
-        return true;
+        //通过快慢指针找到链表前半部分的尾节点
+        ListNode i = head;
+        ListNode j = head;
+        while(j.next != null && j.next.next != null){
+            i = i.next;
+            j = j.next.next;
+        }
+        //反转后半部分链表
+        ListNode pre = null;
+        ListNode cur = i;
+        while(cur != null){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        //判断是否回文
+        ListNode tempH = head;
+        ListNode tempP = pre;
+        while(tempH != tempP){
+            if(tempH.val != tempP.val){
+                break;
+            }
+            tempH = tempH.next;
+            tempP = tempP.next;
+        }
+        if(tempH == tempP || tempH == null){
+            return true;
+        }
+        return false;
     }
 
     //递归
