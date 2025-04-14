@@ -39,6 +39,20 @@ public class 环形链表 {
         return false;
     }
 
+    //这个方法和方法二思想一样，只是写法有一点点区别
+    public boolean hasCycle3(ListNode head) {
+        if(head == null || head.next == null)return false;
+        ListNode show = head;
+        ListNode quick = head;
+        while(quick != null && quick.next != null){
+            quick = quick.next.next;
+            show = show.next;
+            if(quick == show){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     class ListNode {
