@@ -10,8 +10,6 @@ public class test1 {
         Scanner sc = new Scanner(System.in);
         String url = sc.next();
         String key = sc.next();
-        //url = url.split("com")[1];
-
         String[] str = url.split("&");
         Map<String, String> map = new HashMap<>();
         for (int i = 0; i < str.length; i++) {
@@ -37,27 +35,4 @@ public class test1 {
         System.out.println(map.get(key));
     }
 
-    /*public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String url = sc.next();
-        String key = sc.next();
-        url = url.split(".com")[1];
-        String[] str = url.split("&");
-        Map<String, String> map = new HashMap<>();
-        for (int i = 0; i < str.length; i++) {
-            String k,v;
-            if(i == 0){
-                String temp = str[i].split("=")[0];
-                StringBuilder sb = new StringBuilder(temp);
-                sb = sb.deleteCharAt(0);
-                k = sb.toString();
-                v = str[i].split("=")[1];
-            }else{
-                k = str[i].split("=")[0];
-                v = str[i].split("=")[1];
-            }
-            map.put(k,v);
-        }
-        System.out.print(map.get(key));
-    }*/
 }
