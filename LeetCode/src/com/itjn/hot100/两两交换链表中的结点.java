@@ -8,10 +8,21 @@ public class 两两交换链表中的结点 {
 
     public ListNode swapPairs(ListNode head) {
         if(head == null || head.next == null)return head;
+        ListNode res = head.next;
 
-
-
-        return null;
+        ListNode cur = head;
+        ListNode pre = null;
+        while(cur != null && cur.next != null){
+            ListNode next = cur.next;
+            if(pre != null){
+                pre.next = next;
+            }
+            cur.next = next.next;
+            next.next = cur;
+            pre = cur;
+            cur = cur.next;
+        }
+        return res;
     }
 
 
