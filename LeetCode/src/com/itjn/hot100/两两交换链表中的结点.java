@@ -5,11 +5,10 @@ public class 两两交换链表中的结点 {
 
     }
 
-
+    //迭代
     public ListNode swapPairs(ListNode head) {
         if(head == null || head.next == null)return head;
         ListNode res = head.next;
-
         ListNode cur = head;
         ListNode pre = null;
         while(cur != null && cur.next != null){
@@ -24,6 +23,10 @@ public class 两两交换链表中的结点 {
         }
         return res;
     }
+
+
+
+
 
 
     public class ListNode {
