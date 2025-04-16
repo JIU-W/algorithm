@@ -5,7 +5,7 @@ public class 每日温度 {
 
     }
 
-    //方法一：暴力
+    //方法一：暴力(超时了)
     public int[] dailyTemperatures(int[] temperatures) {
         int[] res = new int[temperatures.length];
         for (int i = 0; i < temperatures.length; i++) {
