@@ -1,6 +1,6 @@
 package com.itjn.interview150;
 
-public class oneHundredAndTwentyOne {
+public class 买股票的最佳时机 {
     public static void main(String[] args) {
         int i = maxProfit(new int[]{7,1,5,3,6,4});
         System.out.println(i);
