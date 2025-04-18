@@ -36,4 +36,15 @@ public class oneHundredAndTwentyOne {
         return res;
     }
 
+    //二刷
+    public static int maxProfit2(int[] prices){
+        int res = 0;
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < prices.length; i++) {
+            min = Math.min(min, prices[i - 1]);
+            res = Math.max(res, prices[i] - min);
+        }
+        return res;
+    }
+
 }

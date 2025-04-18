@@ -2,11 +2,11 @@ package com.itjn.stack;
 
 public class 字符串解码 {
     public static void main(String[] args) {
-
+        decodeString("");
     }
 
 
-    public String decodeString(String s) {
+    public static String decodeString(String s) {
 
         return "";
     }
