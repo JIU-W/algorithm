@@ -77,4 +77,10 @@ public class thirtyThree {
     }
 
 
+    //二刷
+    public static int search3(int[] nums, int target){
+
+        return 0;
+    }
+
 }

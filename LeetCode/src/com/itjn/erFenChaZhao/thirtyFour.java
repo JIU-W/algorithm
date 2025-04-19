@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class thirtyFour {
     public static void main(String[] args) {
-        int[] arr = searchRange1(new int[]{1,3}, 1);
+        int[] arr = searchRange2(new int[]{5,7,7,8,8,10}, 8);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -55,6 +55,37 @@ public class thirtyFour {
         }
         if(start == -1)return new int[]{-1,-1};
         return new int[]{start,start + temp - 1};
+    }
+
+
+    //二刷
+    public static int[] searchRange2(int[] nums, int target){
+        int l = 0, r = nums.length - 1;
+        int start = -1, end = -1;
+        int middle;
+        while(l <= r){
+            middle = (l + r) >> 1;
+            if(target < nums[middle]){
+                r = middle - 1;
+            } else if (target > nums[middle]) {
+                l = middle + 1;
+            }else if((target == nums[middle] && middle == 0) ||
+                    (target == nums[middle] && nums[middle - 1] < target)) {
+                start = middle;
+                break;
+            } else if(target == nums[middle] && nums[middle - 1] == target){
+                r = middle - 1;
+            }
+        }
+        if(start == -1)return new int[]{-1, -1};
+
+        for (int i = start; i < nums.length; i++) {
+            if(i == nums.length - 1 || nums[i] < nums[i + 1]){
+                end = i;
+                break;
+            }
+        }
+        return new int[]{start, end};
     }
 
 }
