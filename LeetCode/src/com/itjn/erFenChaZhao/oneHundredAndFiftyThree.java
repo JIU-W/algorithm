@@ -29,4 +29,28 @@ public class oneHundredAndFiftyThree {
         return -1;
     }
 
+    //二刷
+    public static int findMin1(int[] nums){
+        int l = 0,r = nums.length - 1;
+        if(nums[0] > nums[r]){
+            int middle;
+            while(l <= r){
+                middle = (l + r) >> 1;
+                if(nums[middle] >= nums[0]){//落在左半段
+                    l = middle + 1;
+                }else{//落在右半段
+                    if(nums[middle] < nums[middle - 1]){
+                        return nums[middle];
+                    }else{
+                        r = middle - 1;
+                    }
+                }
+            }
+        }else{
+            return nums[0];
+        }
+
+        return -1;
+    }
+
 }
