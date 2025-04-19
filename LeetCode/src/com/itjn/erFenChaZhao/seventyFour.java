@@ -1,8 +1,10 @@
 package com.itjn.erFenChaZhao;
 
+import java.util.Arrays;
+
 public class seventyFour {
     public static void main(String[] args) {
-        boolean b = searchMatrix(new int[][]{{1},{3}}, 3);
+        boolean b = searchMatrix1(new int[][]{{1}}, 1);
         System.out.println(b);
     }
 
@@ -23,5 +25,24 @@ public class seventyFour {
         return false;
     }
 
+    //二刷
+    public static boolean searchMatrix1(int[][] matrix, int target) {
+        int[] arr = new int[matrix.length * matrix[0].length];
+        int index = 0;
+        for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                arr[index++] = anInt;
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+
+        int i = Arrays.binarySearch(arr, target);
+        if(i < 0){
+            return false;
+        }
+        return true;
+    }
 
 }

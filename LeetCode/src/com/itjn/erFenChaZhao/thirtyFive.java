@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class thirtyFive {
     public static void main(String[] args){
+
     }
 
     //方法一：调用API
@@ -28,6 +29,23 @@ public class thirtyFive {
             }
         }
         return l;//不存在时，返回左指针。因为左指针最后的位置就是被插入的位置。
+    }
+
+    //二刷
+    public int searchInsert2(int[] nums, int target){
+        int l = 0, r = nums.length - 1;
+        int middle;
+        while(l <= r){
+            middle = (l + r) / 2;
+            if(target < nums[middle]){
+                r = middle - 1;
+            }else if(target > nums[middle]){
+                l = middle + 1;
+            }else{
+                return middle;
+            }
+        }
+        return l;
     }
 
 }
