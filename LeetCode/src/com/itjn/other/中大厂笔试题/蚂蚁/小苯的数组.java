@@ -1,10 +1,12 @@
 package com.itjn.other.中大厂笔试题.蚂蚁;
 
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class 小苯的数组 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
         while(t-- >0){
@@ -16,11 +18,11 @@ public class 小苯的数组 {
             }
             Arrays.sort(a);
             //前缀和做预处理，用于优化查找效率
-            int[] sum = new int[a.length + 1];
+            long[] sum = new long[a.length + 1];
             for (int i = 0; i < a.length; i++) {
                 sum[i + 1] = sum[i] + a[i];
             }
-            int currentMin = Integer.MAX_VALUE;
+            long currentMin = Long.MAX_VALUE;
             while(q-- >0){
                 int type = sc.nextInt();
                 if(type == 1){
@@ -31,10 +33,10 @@ public class 小苯的数组 {
                         a[i] = Math.min(a[i], v);
                     }*/
                 }else if(type == 2){
-                    if(currentMin == Integer.MAX_VALUE){
+                    if(currentMin == Long.MAX_VALUE){
                         System.out.println(sum[sum.length - 1]);
                     }else{
-                        int res = 0;
+                        long res = 0;
                         int index = a.length;
                         //通过二分查找来找到第一个大于currentMin的数的下标
                         int l = 0, r = a.length;
@@ -49,9 +51,9 @@ public class 小苯的数组 {
                         }
                         index = l;
                         //前半段的和
-                        int pre = sum[index];
+                        long pre = sum[index];
                         //后半段的和
-                        int hou = (a.length - 1 - index + 1) * currentMin;
+                        long hou = (a.length - 1 - index + 1) * currentMin;
                         res = pre + hou;
                         System.out.println(res);
                     }
