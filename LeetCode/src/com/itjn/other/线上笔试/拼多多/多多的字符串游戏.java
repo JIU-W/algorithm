@@ -8,23 +8,33 @@ public class 多多的字符串游戏 {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int K = sc.nextInt();
-        StringBuilder sb = new StringBuilder("");
-        while(N-->0){
+
+        //统计每个字符的出现次数(比我的原始解法耗时更少，不会超时)
+        int[] count = new int[26];
+
+        for (int i = 0; i < N; i++) {
             String s = sc.next();
             int x = sc.nextInt();
-            char[] cc = s.toCharArray();
-            Arrays.sort(cc);
-            String ss = new String(cc);
-            //s = Arrays.toString(cc);
-            for (int i = 0; i < x; i++) {
-                char c = ss.charAt(i);
-                sb.append(c);
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars); // 将字符排序以选取最小的x个
+            for (int j = 0; j < x && j < chars.length; j++) {
+                char c = chars[j];
+                count[c - 'a']++;
             }
         }
-        char[] chars = sb.toString().toCharArray();
-        Arrays.sort(chars);
-        //String T = Arrays.toString(chars);
-        String T = new String(chars);
-        System.out.println(T);
+
+        StringBuilder result = new StringBuilder();
+        int remaining = K;
+        // 按字典序从a到z取字符
+        for (int i = 0; i < 26 && remaining > 0; i++) {
+            int take = Math.min(count[i], remaining);
+            if (take > 0) {
+                for (int j = 0; j < take; j++) {
+                    result.append((char) ('a' + i));
+                }
+                remaining -= take;
+            }
+        }
+        System.out.println(result.toString());
     }
 }
