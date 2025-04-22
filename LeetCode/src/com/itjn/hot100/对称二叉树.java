@@ -1,5 +1,8 @@
 package com.itjn.hot100;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class 对称二叉树 {
     public static void main(String[] args) {
 
@@ -10,33 +13,43 @@ public class 对称二叉树 {
         if(root == null){
             return true;
         }
-        return dfs(root);
+        return dfs(root.left,root.right);
     }
 
-    public boolean dfs(TreeNode root){
-        if(root.left == null && root.right == null){
+    public boolean dfs(TreeNode p, TreeNode q){
+        if(p == null && q == null){
             return true;
         }
-        if(root.left == null || root.right == null){
+        if(p == null || q == null){
             return false;
         }
-        TreeNode left = root.left;
-        TreeNode right = root.right;
-        if(left != right){
+        if(p.val != q.val){
             return false;
         }
-
-        return isSymmetric(root.left) && isSymmetric(root.right);
+        return dfs(p.left, q.right) && dfs(p.right, q.left);
     }
 
 
-    //迭代(广度优先搜索)
+    //迭代(借用队列，进行结点的两两比较)
     public boolean isSymmetric1(TreeNode root) {
-        if(root == null){
-            return true;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode p = queue.poll();
+            TreeNode q = queue.poll();
+            if(p == null && q == null){
+                continue;
+            }
+            if(p == null || q == null || p.val != q.val){
+                return false;
+            }
+            queue.offer(p.left);
+            queue.offer(q.right);
+
+            queue.offer(p.right);
+            queue.offer(q.left);
         }
-
-
         return true;
     }
 
