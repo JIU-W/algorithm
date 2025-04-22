@@ -23,29 +23,31 @@ public class 字符串解码 {
                 stk.addLast(digits);
             } else if (Character.isLetter(cur) || cur == '[') {
                 // 获取一个字母并进栈
-                stk.addLast(String.valueOf(s.charAt(ptr++)));
+                char c = s.charAt(ptr);
+                stk.addLast(c + "");
+                ptr++;
             } else {
-                ++ptr;
-                LinkedList<String> sub = new LinkedList<String>();
+                ptr++;
+                LinkedList<String> sub = new LinkedList<>();
                 while (!"[".equals(stk.peekLast())) {
-                    sub.addLast(stk.removeLast());//注：只有LinkedList有addLast()方法，ArrayList和List都没有
+                    String temp = stk.removeLast();
+                    sub.addLast(temp);//注：只有LinkedList有addLast()方法，ArrayList和List都没有
                 }
                 Collections.reverse(sub);
-                // 左括号出栈
-                stk.removeLast();
-                // 此时栈顶为当前 sub 对应的字符串应该出现的次数
-                int repTime = Integer.parseInt(stk.removeLast());
+                stk.removeLast();//左括号出栈
+                int count = Integer.parseInt(stk.removeLast());//此时栈顶为当前sub对应的字符串应该出现的次数
                 StringBuffer t = new StringBuffer();
                 String o = getString(sub);
                 // 构造字符串
-                while (repTime-- > 0) {
+                while (count-->0) {
                     t.append(o);
                 }
                 // 将构造好的字符串入栈
                 stk.addLast(t.toString());
             }
         }
-
+        //将栈里的元素进行拼接，并且是从"栈底"开始拼接，拼接到"栈顶"，
+        //正是因为真正的栈Deque并不能从"栈底"开始遍历，所以为了方便，便采用LinkedList链表模拟栈。
         return getString(stk);
     }
 
