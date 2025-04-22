@@ -2,6 +2,8 @@ package com.itjn.hot100;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class 二叉树的中序遍历 {
@@ -9,7 +11,7 @@ public class 二叉树的中序遍历 {
 
     }
 
-
+    //递归
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         inOrder(root, list);
@@ -25,6 +27,21 @@ public class 二叉树的中序遍历 {
         inOrder(root.right, list);
     }
 
+    //迭代(栈模拟)
+    public List<Integer> inorderTraversal1(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        while(root != null || !stack.isEmpty()){
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            TreeNode temp = stack.pop();
+            list.add(temp.val);
+            root = temp.right;
+        }
+        return list;
+    }
 
     public class TreeNode {
         int val;

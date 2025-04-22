@@ -13,7 +13,7 @@ public class 字符串解码 {
     //方法一：栈操作(这里要用LinkedList链表模拟栈，更为方便)
     static int ptr;
     public static String decodeString(String s) {
-        LinkedList<String> stk = new LinkedList<String>();
+        LinkedList<String> stk = new LinkedList<>();
         ptr = 0;
         while (ptr < s.length()) {
             char cur = s.charAt(ptr);
