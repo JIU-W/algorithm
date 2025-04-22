@@ -26,22 +26,22 @@ public class 翻转二叉树 {
         if (root == null) {
             return null;
         }
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while(!queue.isEmpty()){
+            //取出队列里的头结点
             TreeNode head = queue.poll();
+            //进行交换操作
             TreeNode temp = head.left;
             head.left = head.right;
             head.right = temp;
-            if(root.left != null){
-                queue.offer(root.left);
+
+            if(head.left != null){
+                queue.offer(head.left);
             }
-            if(root.right != null){
-                queue.offer(root.right);
+            if(head.right != null){
+                queue.offer(head.right);
             }
-
-
-
         }
         return root;
     }
