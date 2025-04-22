@@ -30,6 +30,16 @@ public class 对称二叉树 {
     }
 
 
+    //迭代(广度优先搜索)
+    public boolean isSymmetric1(TreeNode root) {
+        if(root == null){
+            return true;
+        }
+
+
+        return true;
+    }
+
 
     public class TreeNode {
         int val;
