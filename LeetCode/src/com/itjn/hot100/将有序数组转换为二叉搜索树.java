@@ -5,10 +5,20 @@ public class 将有序数组转换为二叉搜索树 {
 
     }
 
+    //二叉树的中序遍历
     public TreeNode sortedArrayToBST(int[] nums) {
+        return convert(nums,0 , nums.length - 1);
+    }
 
-
-        return null;
+    public TreeNode convert(int[] nums, int l, int r) {
+        if(l > r){
+          return null;
+        }
+        int mid = (l + r) / 2;
+        TreeNode treeNode = new TreeNode(nums[mid]);
+        treeNode.left = convert(nums, l, mid - 1);
+        treeNode.right = convert(nums, mid + 1, r);
+        return treeNode;
     }
 
     public class TreeNode {
