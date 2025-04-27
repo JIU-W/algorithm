@@ -20,7 +20,7 @@ public class 验证二叉搜索树 {
         return isBST(node.left, low, node.val) && isBST(node.right, node.val, upper);
     }
 
-    //栈模拟
+    //栈模拟(中序遍历)
     public boolean isValidBST2(TreeNode root) {
         Deque<TreeNode> stack = new LinkedList<>();
         long temp = Long.MIN_VALUE;

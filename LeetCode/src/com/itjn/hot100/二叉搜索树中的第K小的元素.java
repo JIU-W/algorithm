@@ -1,7 +1,9 @@
 package com.itjn.hot100;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 public class 二叉搜索树中的第K小的元素 {
     public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class 二叉搜索树中的第K小的元素 {
 
     }
 
-    //栈模拟(中序遍历)
+    //方法一：栈模拟(中序遍历)
     public int kthSmallest(TreeNode root, int k) {
         Deque<TreeNode> stack = new LinkedList<>();
         int count = 0;
@@ -28,10 +30,20 @@ public class 二叉搜索树中的第K小的元素 {
         return 0;
     }
 
-    //递归(中序遍历)
+    //方法二：递归(中序遍历)
     public int kthSmallest1(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        inorder(root, list);
+        return list.get(k - 1);
+    }
 
-        return 0;
+    public void inorder(TreeNode root, List<Integer> list) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left, list);
+        list.add(root.val);
+        inorder(root.right, list);
     }
 
     public class TreeNode {
