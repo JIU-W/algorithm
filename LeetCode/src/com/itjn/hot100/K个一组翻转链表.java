@@ -9,6 +9,7 @@ public class K个一组翻转链表 {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode hair = new ListNode(0);//引入哑结点
         hair.next = head;
+
         ListNode pre = hair;
         ListNode cur = head;
         while(cur != null){
@@ -24,6 +25,7 @@ public class K个一组翻转链表 {
 
             //进行k个结点的翻转
             ListNode[] reserve = reserve(cur, tail);
+
             //把子链表接回原链表中
             pre.next = reserve[0];
             reserve[1].next = nex;
