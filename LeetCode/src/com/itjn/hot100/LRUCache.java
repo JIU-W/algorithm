@@ -2,11 +2,12 @@ package com.itjn.hot100;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
- * @description 哈希表 + 双向链表
  * @author JIU-W
- * @date 2025-04-27
  * @version 1.0
+ * @description 方法一：(哈希表 + 双向链表)实现
+ * @date 2025-04-27
  */
 public class LRUCache {
 
@@ -16,7 +17,10 @@ public class LRUCache {
         DLinkedNode prev;
         DLinkedNode next;
         public DLinkedNode() {}
-        public DLinkedNode(int _key, int _value) {key = _key; value = _value;}
+        public DLinkedNode(int _key, int _value) {
+            key = _key;
+            value = _value;
+        }
     }
 
     private Map<Integer, DLinkedNode> cache = new HashMap<>();
@@ -66,8 +70,7 @@ public class LRUCache {
                 cache.remove(tail.key);
                 size--;
             }
-        }
-        else {
+        } else {
             //如果key存在，先通过哈希表定位，再修改value并移到头部
             node.value = value;
             //移到头部
