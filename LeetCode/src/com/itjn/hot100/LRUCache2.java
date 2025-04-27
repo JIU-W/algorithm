@@ -11,6 +11,7 @@ import java.util.Map;
  */
 
 public class LRUCache2 extends LinkedHashMap<Integer, Integer> {
+
     private int capacity;
 
     public LRUCache2(int capacity) {
