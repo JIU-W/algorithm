@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.stack;
 
 public class 柱状图中最大的矩形 {
     public static void main(String[] args) {
