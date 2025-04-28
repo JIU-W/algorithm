@@ -41,7 +41,7 @@ public class 每日温度 {
     public int[] dailyTemperatures2(int[] temperatures) {
         int length = temperatures.length;
         int[] res = new int[length];
-        Deque<Integer> stack = new LinkedList<Integer>();
+        Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < length; i++) {
             int temp = temperatures[i];
             while(!stack.isEmpty() && temp > temperatures[stack.peek()]){
