@@ -41,10 +41,16 @@ public class 二叉树的右视图 {
         dfs(root, 0);
         return ans;
     }
+    //优先遍历右子树，并在首次到达某一深度时记录节点值，从而确保每层只保留最右侧的节点。
     private void dfs(TreeNode node, int depth) {
-        if (node == null) return;
-        if (ans.size() <= depth)
+        if (node == null){
+            return;
+        }
+        //首次到达某一深度时记录节点值
+        if (ans.size() == depth){
             ans.add(node.val);
+        }
+        //优先遍历右子树
         dfs(node.right, depth + 1);
         dfs(node.left, depth + 1);
     }
