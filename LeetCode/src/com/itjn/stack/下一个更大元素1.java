@@ -11,6 +11,7 @@ public class 下一个更大元素1 {
 
     }
 
+    //单调栈 + 哈希表
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int[] res = new int[nums1.length];
         int[] temp = new int[nums2.length];
