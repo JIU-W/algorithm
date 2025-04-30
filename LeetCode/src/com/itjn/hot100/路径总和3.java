@@ -6,7 +6,7 @@ public class 路径总和3 {
 
     }
 
-    //深度优先搜索(递归)
+    //方法一：深度优先搜索(递归)
     public int pathSum(TreeNode root, long targetSum) {
         if(root == null){
             return 0;
@@ -25,11 +25,16 @@ public class 路径总和3 {
         if(root.val == targetSum){
             ret++;
         }
-        ret += rootSum(root.left, targetSum- root.val);
-        ret += rootSum(root.right, targetSum- root.val);
+        ret += rootSum(root.left, targetSum - root.val);
+        ret += rootSum(root.right, targetSum - root.val);
         return ret;
     }
 
+    //方法二：前缀和 + 递归
+    public int pathSum2(TreeNode root, long targetSum) {
+
+        return 0;
+    }
 
     public class TreeNode {
         int val;
