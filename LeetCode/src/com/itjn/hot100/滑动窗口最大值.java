@@ -1,8 +1,6 @@
 package com.itjn.hot100;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class 滑动窗口最大值 {
     public static void main(String[] args) {
@@ -10,7 +8,7 @@ public class 滑动窗口最大值 {
         System.out.println(Arrays.toString(arr));
     }
 
-
+    //方法一：优先队列
     public static int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         int[] res = new int[n - k + 1];
@@ -39,5 +37,54 @@ public class 滑动窗口最大值 {
         return res;
     }
 
+    //方法二：单调队列
+    public int[] maxSlidingWindow1(int[] nums, int k) {
+        int n = nums.length;
+        Deque<Integer> deque = new LinkedList<Integer>();
+        for (int i = 0; i < k; ++i) {
+            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+        }
+
+        int[] ans = new int[n - k + 1];
+        ans[0] = nums[deque.peekFirst()];
+        for (int i = k; i < n; ++i) {
+            while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+            while (deque.peekFirst() <= i - k) {
+                deque.pollFirst();
+            }
+            ans[i - k + 1] = nums[deque.peekFirst()];
+        }
+        return ans;
+    }
+
+    //二刷：优先队列
+    public int[] maxSlidingWindow2(int[] nums, int k){
+        int n = nums.length;
+        int[] res = new int[n - k + 1];
+        PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] != o2[0] ? o2[0] - o1[0] : o2[1] - o1[1];
+            }
+        });
+        for (int i = 0; i < k; i++) {
+            queue.offer(new int[]{nums[i], i});
+        }
+        res[0] = queue.peek()[0];
+        for (int i = k; i < nums.length; i++) {
+            queue.offer(new int[]{nums[i], i});
+            while(queue.peek()[1] <= i - k){
+                queue.poll();
+            }
+            res[i - k + 1] = queue.peek()[0];
+        }
+        return res;
+    }
 
 }
