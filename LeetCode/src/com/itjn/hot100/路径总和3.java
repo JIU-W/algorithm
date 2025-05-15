@@ -36,6 +36,32 @@ public class 路径总和3 {
         return 0;
     }
 
+    //二刷
+    public int pathSum3(TreeNode root, long targetSum) {
+        if(root == null){
+            return 0;
+        }
+        int sum = rootSum3(root, targetSum);
+        sum += pathSum3(root.left, targetSum);
+        sum += pathSum3(root.right, targetSum);
+        return sum;
+    }
+
+    public int rootSum3(TreeNode root, long targetSum){
+        if (root == null){
+            return 0;
+        }
+        int temp = 0;
+        if(root.val == targetSum){
+            temp++;
+        }
+        temp += rootSum3(root.left, targetSum - root.val);
+        temp += rootSum3(root.right,targetSum - root.val);
+        return temp;
+    }
+
+
+
     public class TreeNode {
         int val;
         TreeNode left;
