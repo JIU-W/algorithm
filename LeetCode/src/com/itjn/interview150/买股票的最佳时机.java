@@ -47,4 +47,15 @@ public class 买股票的最佳时机 {
         return res;
     }
 
+    //三刷
+    public static int maxProfit3(int[] prices){
+        int res = 0;
+        int min = 10001;
+        for (int i = 1; i < prices.length; i++) {
+            min = Math.min(min, prices[i - 1]);
+            res = Math.max(res, prices[i] - min);
+        }
+        return res;
+    }
+
 }
