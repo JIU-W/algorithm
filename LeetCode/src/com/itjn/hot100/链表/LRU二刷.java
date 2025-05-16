@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.链表;
 
 import java.util.HashMap;
 import java.util.LinkedList;

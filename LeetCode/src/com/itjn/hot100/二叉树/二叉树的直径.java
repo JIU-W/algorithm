@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.二叉树;
 
 public class 二叉树的直径 {
     public static void main(String[] args) {

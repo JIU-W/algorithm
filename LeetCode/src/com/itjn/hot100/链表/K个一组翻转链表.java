@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.链表;
 
 public class K个一组翻转链表 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.二叉树;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

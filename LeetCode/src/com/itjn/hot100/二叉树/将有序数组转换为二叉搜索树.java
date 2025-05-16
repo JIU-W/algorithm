@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.二叉树;
 
 public class 将有序数组转换为二叉搜索树 {
     public static void main(String[] args) {

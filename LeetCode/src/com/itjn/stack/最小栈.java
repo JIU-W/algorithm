@@ -1,9 +1,6 @@
 package com.itjn.stack;
 
-import com.itjn.hot100.删除链表的倒数第N个结点;
-
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 
 public class 最小栈 {

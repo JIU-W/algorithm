@@ -1,4 +1,4 @@
-package com.itjn.hot100;
+package com.itjn.hot100.链表;
 
 public class 两数相加 {
     public static void main(String[] args) {
