@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class 反转链表 {
     public static void main(String[] args) {
         //测试数据输入
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         ListNode ln = new ListNode(sc.nextInt());
         ListNode head = ln;
         while (!sc.hasNextInt()){
@@ -15,7 +15,7 @@ public class 反转链表 {
             temp.next = new ListNode(sc.nextInt());
             ln = temp;
         }
-        reverseList(head);*/
+        reverseList(head);
     }
 
     //迭代法
