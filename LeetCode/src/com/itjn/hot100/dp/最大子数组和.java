@@ -1,6 +1,6 @@
-package com.itjn.hot100;
+package com.itjn.hot100.dp;
 
-public class fiftyThree {
+public class 最大子数组和 {
     public static void main(String[] args) {
         int i = maxSubArray2(new int[]{5,4,-1,7,8});
         System.out.println(i);
@@ -39,6 +39,18 @@ public class fiftyThree {
         max = f[0];
         for (int i = 1; i < nums.length; i++) {
             max = Math.max(f[i], max);
+        }
+        return max;
+    }
+
+    //三刷
+    public static int maxSubArray3(int[] nums) {
+        int[] arr = new int[nums.length];
+        arr[0] = nums[0];
+        int max = arr[0];
+        for (int i = 1; i < nums.length; i++) {
+            arr[i] = Math.max(nums[i], nums[i] + arr[i - 1]);
+            max = Math.max(max, arr[i]);
         }
         return max;
     }
