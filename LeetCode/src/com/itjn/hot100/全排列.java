@@ -44,5 +44,32 @@ public class 全排列 {
         }
     }
 
+    //二刷
+    public List<List<Integer>> permute1(int[] nums){
+        int len = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+
+        boolean[] status = new boolean[len];
+        List<Integer> path = new ArrayList<>();
+        dfs(res, path, nums, len, status, 0);
+        return res;
+    }
+
+    public void dfs(List<List<Integer>> res, List<Integer> path, int[] nums, int len,
+                    boolean[] status, int depth){
+        if(depth == len){
+            res.add(new ArrayList<>(path));
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if(!status[i]){
+                path.add(nums[i]);
+                status[i] = true;
+                dfs(res, path, nums, len, status, depth + 1);
+                //回溯
+                status[i] = false;
+                path.remove(path.size() - 1);
+            }
+        }
+    }
 
 }
