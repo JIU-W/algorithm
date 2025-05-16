@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class 杨辉三角 {
-    public static void main(String[] args) {
-
-    }
 
     //数学
     public List<List<Integer>> generate(int numRows) {
