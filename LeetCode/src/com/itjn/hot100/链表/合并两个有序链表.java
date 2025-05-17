@@ -12,11 +12,11 @@ public class 合并两个有序链表 {
 
         ListNode preHead = new ListNode();
         ListNode temp3 = preHead;
-        while(temp1 != null && temp2 != null){
-            if(temp1.val <= temp2.val){
+        while (temp1 != null && temp2 != null) {
+            if (temp1.val <= temp2.val) {
                 temp3.next = temp1;
                 temp1 = temp1.next;
-            }else{
+            } else {
                 temp3.next = temp2;
                 temp2 = temp2.next;
             }
@@ -41,13 +41,41 @@ public class 合并两个有序链表 {
         }
     }
 
+
+    //二刷(迭代)
+    public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        ListNode temp1 = list1;
+        ListNode temp2 = list2;
+
+        //引入一个哑结点
+        ListNode preHead = new ListNode();
+        ListNode temp3 = preHead;
+        while (temp1 != null && temp2 != null) {
+            if (temp1.val <= temp2.val) {
+                temp3.next = temp1;
+                temp1 = temp1.next;
+            } else {
+                temp3.next = temp2;
+                temp2 = temp2.next;
+            }
+            temp3 = temp3.next;
+        }
+        temp3.next = temp1 == null ? temp2 : temp1;
+        return preHead.next;
+    }
+
+
     public class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
+
+        ListNode() {
+        }
+
         ListNode(int val) {
             this.val = val;
         }
+
         ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
