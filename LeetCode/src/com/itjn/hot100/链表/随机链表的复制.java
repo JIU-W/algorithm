@@ -47,6 +47,22 @@ public class 随机链表的复制 {
         return map.get(head);
     }
 
+    //二刷
+    Map<Node,Node> map1 = new HashMap<>();
+
+    public Node copyRandomList2(Node head){
+        if(head == null){
+            return null;
+        }
+        if(!map1.containsKey(head)){
+            Node newHead = new Node(head.val);
+            map1.put(head, newHead);
+            newHead.next = copyRandomList2(head.next);
+            newHead.random = copyRandomList2(head.random);
+        }
+        return map1.get(head);
+    }
+
 
     class Node {
         int val;

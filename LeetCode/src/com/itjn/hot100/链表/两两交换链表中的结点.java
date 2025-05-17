@@ -24,7 +24,40 @@ public class 两两交换链表中的结点 {
         return res;
     }
 
+    //方法二(也是迭代的方法)
+    public ListNode swapPairs2(ListNode head){
+        //创建一个哑结点
+        ListNode pre = new ListNode(0, head);
+        ListNode temp = pre;
+        while(temp.next != null && temp.next.next != null){
+            ListNode node1 = temp.next;
+            ListNode node2 = temp.next.next;
+            ListNode next = node2.next;
+            node1.next = next;
+            node2.next = node1;
+            temp.next = node2;
+            temp = node1;
+        }
+        return pre.next;
+    }
 
+    //递归
+    public ListNode swapPairs3(ListNode head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode newHead = head.next;
+        head.next = swapPairs3(newHead.next);
+        newHead.next = head;
+        return newHead;
+    }
+
+
+    //二刷
+    public ListNode swapPairs4(ListNode head){
+
+        return null;
+    }
 
 
 
