@@ -83,6 +83,50 @@ public class 回文链表 {
         return false;
     }
 
+    //二刷(快慢指针法)
+    public static boolean isPalindrome3(ListNode head){
+        ListNode i = head;
+        ListNode j = head;
+        while(j.next != null && j.next.next != null){
+            i = i.next;
+            j = j.next.next;
+        }
+        ListNode pre = null;
+        ListNode cur = i;
+        while(cur != null){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        ListNode tempH = head;
+        ListNode tempT = pre;
+        while(tempH != null){
+            if(tempH.val != tempT.val){
+                break;
+            }
+            tempH = tempH.next;
+            tempT = tempT.next;
+        }
+
+        //链表复原
+        ListNode curr = pre;
+        ListNode pree = null;
+        while(curr != null){
+            ListNode next = curr.next;
+            curr.next = pree;
+            pree = curr;
+            curr = next;
+        }
+
+        if(tempH == null){
+            return true;
+        }
+        return false;
+    }
+
+
+
     //递归
 
     //栈
@@ -95,4 +139,5 @@ public class 回文链表 {
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
+
 }
