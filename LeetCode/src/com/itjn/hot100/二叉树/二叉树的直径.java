@@ -9,7 +9,7 @@ public class 二叉树的直径 {
     int max;
     public int diameterOfBinaryTree(TreeNode root) {
         max = 1;
-        depth(root);
+        num(root);
         return max - 1;
     }
 
@@ -21,6 +21,18 @@ public class 二叉树的直径 {
         int R = depth(root.right);
         max = Math.max(max, L + R + 1);
         return Math.max(L, R) + 1;
+    }
+
+    //二刷
+    public int num(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+
+        int left = num(root.left);
+        int rigth = num(root.right);
+        max = Math.max(max, left + rigth + 1);
+        return Math.max(left, rigth) + 1;
     }
 
     public class TreeNode {

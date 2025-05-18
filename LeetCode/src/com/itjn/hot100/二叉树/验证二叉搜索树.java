@@ -20,7 +20,23 @@ public class 验证二叉搜索树 {
         return isBST(node.left, low, node.val) && isBST(node.right, node.val, upper);
     }
 
-    //栈模拟(中序遍历)
+    //二刷
+    public boolean isValidBST1(TreeNode root){
+        return isBST1(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isBST1(TreeNode root, long left, long right){
+        if(root == null){
+            return true;
+        }
+        if(root.val <= left || root.val >= right){
+            return false;
+        }
+        return isBST1(root.left, left, root.val) && isBST1(root.right, root.val, right);
+    }
+
+
+    //栈模拟(中序遍历)   原理：对二叉搜索树进行中序遍历得到的数据是递增的
     public boolean isValidBST2(TreeNode root) {
         Deque<TreeNode> stack = new LinkedList<>();
         long temp = Long.MIN_VALUE;

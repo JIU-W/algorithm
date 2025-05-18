@@ -5,7 +5,7 @@ public class 将有序数组转换为二叉搜索树 {
 
     }
 
-    //二叉树的中序遍历
+    //对二叉搜索树进行中序遍历得到的数据是递增的
     public TreeNode sortedArrayToBST(int[] nums) {
         return convert(nums,0 , nums.length - 1);
     }
