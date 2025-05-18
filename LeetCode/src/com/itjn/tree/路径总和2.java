@@ -27,7 +27,7 @@ public class 路径总和2 {
         targetSum -= root.val;
 
         if (root.left == null && root.right == null && targetSum == 0) {
-            ret.add(new LinkedList<Integer>(path));
+            ret.add(new LinkedList<>(path));
         }
 
         dfs(root.left, targetSum);
