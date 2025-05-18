@@ -8,9 +8,9 @@ public class 从前序与中序遍历序列构造二叉树 {
 
     }
 
-    /*private Map<Integer, Integer> indexMap;
+    /*private Map<Integer, Integer> indexMap1;
 
-    public TreeNode myBuildTree(int[] preorder, int[] inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
+    public TreeNode myBuildTree1(int[] preorder, int[] inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
         if (preorder_left > preorder_right) {
             return null;
         }
@@ -18,7 +18,7 @@ public class 从前序与中序遍历序列构造二叉树 {
         // 前序遍历中的第一个节点就是根节点
         int preorder_root = preorder_left;
         // 在中序遍历中定位根节点
-        int inorder_root = indexMap.get(preorder[preorder_root]);
+        int inorder_root = indexMap1.get(preorder[preorder_root]);
 
         // 先把根节点建立出来
         TreeNode root = new TreeNode(preorder[preorder_root]);
@@ -27,25 +27,26 @@ public class 从前序与中序遍历序列构造二叉树 {
 
         //递归地构造左子树，并连接到根节点
         //先序遍历中「从 左边界+1 开始的 size_left_subtree」个元素就对应了中序遍历中「从 左边界 开始到 根节点定位-1」的元素
-        root.left = myBuildTree(preorder, inorder, preorder_left + 1,
+        root.left = myBuildTree1(preorder, inorder, preorder_left + 1,
                 preorder_left + size_left_subtree, inorder_left, inorder_root - 1);
 
         //递归地构造右子树，并连接到根节点
         //先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
-        root.right = myBuildTree(preorder, inorder, preorder_left + size_left_subtree + 1,
+        root.right = myBuildTree1(preorder, inorder, preorder_left + size_left_subtree + 1,
                 preorder_right, inorder_root + 1, inorder_right);
 
         return root;
     }
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public TreeNode buildTree1(int[] preorder, int[] inorder) {
         int n = preorder.length;
-        indexMap = new HashMap<Integer, Integer>();//构造哈希映射，帮助我们快速定位根节点
+        indexMap1 = new HashMap<Integer, Integer>();//构造哈希映射，帮助我们快速定位根节点
         for (int i = 0; i < n; i++) {
-            indexMap.put(inorder[i], i);
+            indexMap1.put(inorder[i], i);
         }
-        return myBuildTree(preorder, inorder, 0, n - 1, 0, n - 1);
+        return myBuildTree1(preorder, inorder, 0, n - 1, 0, n - 1);
     }*/
+
 
     //二刷(递归 + 哈希表优化)
     private Map<Integer,Integer> indexMap;
@@ -78,12 +79,32 @@ public class 从前序与中序遍历序列构造二叉树 {
         return root;
     }
 
+
     //三刷
+    private Map<Integer,Integer> map = new HashMap<>();
+
     public TreeNode buildTree2(int[] preorder, int[] inorder){
-
-        return null;
+        int n = inorder.length;
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        return bt(preorder, inorder, 0, n - 1, 0, n-1);
     }
+    public TreeNode bt(int[] preorder, int[] inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right){
+        if(preorder_left > preorder_right){
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[preorder_left]);
+        Integer inorder_root_index = map.get(preorder[preorder_left]);
 
+        int left_count = inorder_root_index - inorder_left;
+
+        root.left = bt(preorder, inorder, preorder_left + 1, preorder_left + left_count,
+                inorder_left, inorder_root_index - 1);
+        root.right = bt(preorder, inorder, preorder_left + left_count + 1, preorder_right,
+                inorder_root_index + 1, inorder_right);
+        return root;
+    }
 
     public class TreeNode {
         int val;
