@@ -16,18 +16,13 @@ public class test2 {
     }
 
     public boolean dfs(TreeNode root, int sum){
-        if(root == null){
-            if(sum == 0){
-                return true;
-            }else{
-                return false;
-            }
-        }
-        /*if(dfs(root.left,sum - root.val) || dfs(root.right,sum - root.val)){
-            return true;
-        }else{
+        if (root == null) {
             return false;
-        }*/
+        }
+        if (root.left == null && root.right == null) {
+            return sum == root.val;
+        }
+
         return dfs(root.left,sum - root.val) || dfs(root.right,sum - root.val);
     }
 
