@@ -78,6 +78,12 @@ public class 从前序与中序遍历序列构造二叉树 {
         return root;
     }
 
+    //三刷
+    public TreeNode buildTree2(int[] preorder, int[] inorder){
+
+        return null;
+    }
+
 
     public class TreeNode {
         int val;

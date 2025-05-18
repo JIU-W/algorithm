@@ -8,9 +8,11 @@ public class 路径总和 {
     }
 
     public boolean dfs(TreeNode root, int sum) {
+        //而如果真的走到了空结点，说明这个空结点的父节点的另一个子节点不为空，也就说明这个空节点不是叶子节点，所以返回false
         if (root == null) {
             return false;
         }
+        //两个子节点同时为空就会校验，不会继续走下去了
         if (root.left == null && root.right == null) {
             return sum == root.val;
         }
